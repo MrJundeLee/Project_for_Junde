@@ -1,0 +1,57 @@
+.page_footer{
+	
+	background-color:#303030;
+	
+	height:115px;
+	
+	color:#ccc;
+	
+	font-size:.8rem;
+	
+}
+
+.page_footer .special{
+	
+	color:#777;
+	
+}
+
+.page_footer .logo{
+	
+	opacity:.7;
+	
+}
+
+.page_footer .detail{
+	
+	margin-left:-30px;
+	
+	line-height:1.7;
+	
+}
+
+@media( max-width:768px ){
+	
+	.page_footer{
+		
+		height:auto;
+		
+		padding:0 15px;
+		
+	}
+	
+	.page_footer .table_block,.page_footer .table_row,.page_footer .table_cell{
+		
+		display:block;
+		
+		margin:15px 0;
+		
+	}
+	
+	.page_footer .detail{
+		
+		margin:0;
+		
+	}
+	
+}

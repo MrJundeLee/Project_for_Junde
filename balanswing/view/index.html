@@ -1,0 +1,593 @@
+<!DOCTYPE html>
+<html lang="en" ng-app="index">
+<head>
+    <meta charset="UTF-8"/>
+    <title>HYAC</title>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1"/>
+    <link href="../library/css/bootstrap.min.css" rel="stylesheet"/>
+	<link href="../resources/css/page.css" rel="stylesheet"/>
+	<link href="../resources/css/index.css" rel="stylesheet"/>
+	
+</head>
+<body>
+
+<div class="page_main">
+
+	<div class="page_header" ng-init="nav_list=[{url:'./introduction.html',detail:'技术介绍',active:true},{url:'./explain.html',detail:'使用说明'},{url:'#',detail:'用户评价'},{url:'#',detail:'立即购买',type:'special'}];logo_url='../resources/images/logo.png';">
+
+		<div class="content">
+		
+			<div class="logo">
+
+				<a href="./">
+				
+					<img src="{{logo_url}}"/>
+				
+				</a>
+			
+			</div>
+			
+			<div class="list">
+			
+				<ul>
+				
+					<li class="unit{{data.type == 'special' ? ' special' : ''}}{{data.active ? ' active' : ''}}" ng-repeat="data in nav_list">
+					
+						<a href="{{data.url}}">
+						
+							{{data.detail}}
+						
+						</a>
+					
+					</li>
+				
+				</ul>
+			
+			</div>
+		
+		</div>
+	
+	</div>
+	
+	<!--<div ng-init="Junde={name:'JundeLee',sex:1,age:25}">
+	
+		<div ng-repeat="(key , value) in Junde track by $id(value)">
+		
+			{{ key + ' = ' + ( ( value | currency ) + '' || value ) + ' { ' + $id + ' } ' }}
+		
+		</div>
+	
+	</div>
+	
+	<div ng-init="arr=[{index:10,template:'123'},{index:5,template:'4567'},{index:15,template:'89123'}]">
+	
+		<div ng-repeat="value in arr | orderBy:'index'">
+		
+			{{ value.index + '  ' + ( value.template | reverse ) }}
+		
+		</div>
+	
+	</div>-->
+
+    <div class="page_body" style="background-color:#000;">
+	
+		<div class="banner banner_index" auto-height>
+		
+			<img src="../resources/images/banner_index.jpg" class="media_show"/>
+		
+			<div class="scroll_icon media_hide" click-scroll>
+			
+				<img src="../resources/images/scroll_icon.png"/>
+				
+				<div class="scroll_detail">
+				
+				<span>﹀</span><span>﹀</span>
+
+				</div>
+			
+			</div>
+		
+		</div>
+		
+		<ng-view ng-init="banner_list=[ {
+			title : {
+				title : 'SWING TECHNOLOGY',
+				detail: [{
+				
+					detail : '针对打高尔夫球时身体肌肉线的方向缝制，达到快速矫正不良姿势的效果。'
+				
+				}]
+			},
+			img_list : [[{
+			
+				url : '../resources/images/index_banner_01.png',
+				
+				detail : {
+				
+					title : 'ADRESS',
+					
+					detail : ['用运动科学原理缝制让胳膊稳定得','固定在特定角度和位置，','然后双臂固定在胸部。']
+				
+				}
+			
+			},{
+			
+				url : '../resources/images/index_banner_02.png',
+				
+				detail : {
+				
+					title : 'TAKE AWAY,TOP',
+					
+					detail : ['起始动作和转腕动作时让','双臂维持倒三角形的样子，','并加压。']
+				
+				}
+			
+			},{
+			
+				url : '../resources/images/index_banner_03.png',
+				
+				detail : {
+				
+					title : 'DOWN SWING',
+					
+					detail : ['固定在击球前位置并引导挥杆。']
+				
+				}
+			
+			},{
+			
+				url : '../resources/images/index_banner_04.png',
+				
+				detail : {
+				
+					title : 'IMPACT,FOLLOW THROUGH',
+					
+					detail : ['击球瞬间时维持稳定击球的姿势','防止左曲球和右曲球。']
+				
+				}
+			
+			}],[{
+			
+				url : '../resources/images/index_banner_05.jpg'
+			
+			},{
+			
+				url : '../resources/images/index_banner_06.jpg'
+			
+			},{
+			
+				url : '../resources/images/index_banner_07.jpg'
+			
+			},{
+			
+				url : '../resources/images/index_banner_08.jpg'
+			
+			},{
+			
+				url : '../resources/images/index_banner_09.jpg'
+			
+			},{
+			
+				url : '../resources/images/index_banner_10.jpg'
+			
+			}]]
+		} , {
+		
+			title : {
+				title : '科学的数据分析+严谨的设计理念',
+			},
+			
+			type : 'container',
+			
+			img_list : [[{
+			
+				url : '../resources/images/index_banner_11.png'
+			
+			},{
+			
+				url : '../resources/images/index_banner_12.png'
+			
+			},{
+			
+				url : '../resources/images/index_banner_13.png'
+			
+			}],[{
+			
+				url : '../resources/images/index_banner_14.png'
+			
+			}],[{
+			
+				url : '../resources/images/index_banner_15.png'
+			
+			}]]
+		
+		},{
+		
+			title : {
+			
+				title : 'ICE SKIN / UV-CUT',
+				
+				detail : [{
+				
+					style : 'font-size:1.2rem;',
+				
+					detail : '选用韩国HYOSUNG公司高性能原纱布料'
+				
+				}]
+			
+			},
+			
+			type : 'container',
+			
+			img_list : [[{
+			
+				url : '../resources/images/index_banner_17.png',
+				
+				detail : {
+				
+					detail : ['AIR-透气性能'],
+				
+				}
+			
+			},{
+			
+				url : '../resources/images/index_banner_18.png',
+				
+				detail : {
+				
+					detail : ['RAIN-防雨性能'],
+				
+				}
+			
+			},{
+			
+				url : '../resources/images/index_banner_19.png',
+				
+				detail : {
+				
+					detail : ['WIND-防风性能'],
+				
+				}
+			
+			}]]
+		
+		},{
+		
+			title : {
+			
+				title : 'COLOR',
+				
+				detail : [{
+				
+					style : 'color:#949494;font-size:1.3rem;',
+					
+					detail : '黑色'
+				
+				},{
+				
+					style : 'color:#ea64ab;font-size:1.3rem;',
+					
+					detail : '粉色'
+				
+				},{
+				
+					style : 'color:#fff;font-size:1.3rem;',
+					
+					detail : '白色'
+				
+				},{
+				
+					style : 'color:#46b9d1;font-size:1.3rem;',
+					
+					detail : '蓝色'
+				
+				}],
+				
+				detail_join : '/'
+			
+			},
+			
+			type : 'container',
+			
+			img_list : [[{
+			
+				url : '../resources/images/index_banner_20.jpg'
+			
+			},{
+			
+				url : '../resources/images/index_banner_21.jpg'
+			
+			}],[{
+			
+				url : '../resources/images/index_banner_22.jpg'
+			
+			},{
+			
+				url : '../resources/images/index_banner_23.jpg'
+			
+			}]]
+		
+		},{
+		
+			type : 'container',
+			
+			title : {
+			
+				title : '国际专利/认证/机构认证',
+				
+				detail : [{
+				
+					style : 'font-size:1.2rem;',
+				
+					detail : '专利号 ： 10-2014-0173558 / 30-2017-0013473 / 30-2017-0013474'
+				
+				}]
+				
+			},
+			
+			img_list : [[{
+			
+				url : '../resources/images/index_banner_24.jpg'
+			
+			},{
+			
+				url : '../resources/images/index_banner_25.jpg'
+			
+			},{
+			
+				url : '../resources/images/index_banner_26.jpg'
+			
+			},{
+			
+				url : '../resources/images/index_banner_27.jpg'
+			
+			}]]
+		
+		},{
+		
+			type : 'special',
+			
+			special_img_url : '../resources/images/index_banner_29.png',
+			
+			special_shop_url : 'javascript:;',
+		
+			img_list : [[{
+			
+				url : '../resources/images/index_banner_28.jpg'
+			
+			}]]
+		
+		} ];">
+		
+			<div class="banner banner_content banner_{{key<10 ? '0' + key : key}}" ng-repeat="(key,data) in banner_list">
+			
+				<div class="content{{data.type == 'container' ? ' container' : ( data.type == 'special' ? ' special_container' : '' )}}">
+				
+					<div class="title" ng-if="data.title">
+				
+						<h1 ng-if="data.title.title">
+					
+							{{data.title.title}}
+						
+						</h1>
+							
+						<p class="detail" ng-if="data.title.detail">
+						
+							<ng-view ng-repeat="(key,detail) in data.title.detail">
+							
+								<span style="{{detail.style || ''}}">
+								
+									{{detail.detail}}
+								
+								</span>
+								
+								{{data.title.detail.length - 1 != key && data.title.detail_join ? data.title.detail_join : ''}}
+							
+							</ng-view>
+						
+						</p>
+					
+					</div>
+				
+					<div class="img_list img_list_{{key<10 ? '0' + key : key}} clear" ng-repeat="(key,imgs) in data.img_list" ng-init="length=12/imgs.length;md_length=24/imgs.length;">
+					
+						<div class="col-lg-{{length}} col-sm-{{md_length > 12 ? 12 : ( md_length > 6 ? ( imgs.length % 2 == 0 ? 6 : length ) : md_length )}} col-xs-{{length<=2?6:12}}" ng-repeat="value in imgs">
+						
+							<img src="{{value.url}}"/>
+							
+							<div class="detail" ng-if="value.detail">
+							
+								<h4 class="title" ng-if="value.detail.title">
+								
+									{{value.detail.title}}
+								
+								</h4>
+								
+								<p class="detail">
+								
+									<span class="media_no_line" ng-repeat="detail in value.detail.detail">
+									
+										{{detail}}
+									
+									</span>
+								
+								</p>
+							
+							</div>
+						
+						</div>
+					
+					</div>
+					
+					<div ng-if="data.type == 'special'" class="special">
+					
+						<div class="container h_100">
+						
+							<div class="row h_100">
+							
+								<div class="col-lg-5 col-sm-3 relative h_100 media_hide">
+								
+									<div class="img_block">
+									
+									<img src="{{data.special_img_url}}"/>
+									
+									</div>
+								
+								</div>
+								
+								<div class="col-lg-7 col-sm-9 col-xs-12">
+								
+									<a class="shop_btn" href="{{data.special_shop_url}}">
+									
+										SHOW NOW >
+									
+									</a>
+									
+									<p class="shop_detail">
+									
+										BALANSWING TECHNOLOGY
+									
+										<span class="bigger">专业高尔夫运动球衣</span>
+									
+									</p>
+								
+								</div>
+							
+							</div>
+						
+						</div>
+					
+					</div>
+				
+				</div>
+			
+			</div>
+		
+		</ng-view>
+	
+		<!--<a href="../library/view/angular-1.5.8/docs/">
+		
+			{{ J + '   ' + D }}<br/>
+			
+			{{ get_name() | lowercase }}
+		
+		</a>
+		
+		<div ng-controller="ajax">
+		
+			<ul>
+			
+				<li ng-repeat="data in names | orderBy:'Name'">
+				
+					{{ data.Name + '  ' + data.Country }}
+				
+				</li>
+			
+			</ul>
+		
+		</div>
+		
+		<iframe src="./test01.html">
+		
+		</iframe>-->
+	
+	</div>
+	
+	<!--
+	
+	<runoob-directive></runoob-directive>
+	
+	<div class="runoob-directive"></div>
+	
+	<div runoob-directive></div>-->
+	
+    <div class="page_footer">
+	
+		<div class="container h_100" style="display:table;">
+		
+			<div class="row table_row">
+			
+				<div class="col-lg-3 table_cell float_none">
+				
+					<div class="logo">
+					
+						<img src="{{logo_url}}"/>
+					
+					</div>
+				
+				</div>
+				
+				<div class="col-lg-9 table_cell float_none">
+				
+					<div class="detail">
+					
+						<ul>
+						
+							<li>
+							
+								[韩国] Chinaweb<span class="fontFamily_NanumGothic">주소:서울특별시광진구능동로49길 9</span>
+							
+							</li>
+							
+							<li>	
+								
+								[中国] 地址: 辽宁省大连市开发区双D港生命3路跨境电商产业园10号楼2单元401
+							
+							</li>
+							
+							<li class="special">
+							
+								Copyright © Balanswing All rights reserved.
+							
+							</li>
+						
+						</ul>
+					
+					</div>
+				
+				</div>
+			
+			</div>
+		
+		</div>
+
+    </div>
+
+    <div class="page_fixed_view">
+		
+    </div>
+
+    <div class="page_hidden_view">
+		
+    </div>
+
+</div>
+</body>
+<script src="../library/js/jquery.js"></script>
+<script src="../library/js/bootstrap.min.js"></script>
+<script src="../library/js/angular.min.js">
+
+</script>
+<script src="../library/js/angular-resource.min.js">
+
+</script>
+<script src="../library/js/angular-route.min.js">
+
+</script>
+<script src="../library/js/angular-cookies.min.js">
+
+</script>
+<script src="../library/js/angular-sanitize.min.js">
+
+</script>
+<script src="../library/js/angular-touch.min.js">
+
+</script>
+<script src="../library/js/angular-animate.min.js">
+
+</script>
+<script src="../resources/js/page.js">
+
+</script>
+</html>

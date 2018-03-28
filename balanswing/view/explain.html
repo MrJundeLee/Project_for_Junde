@@ -1,0 +1,267 @@
+<!DOCTYPE html>
+<html lang="en" ng-app="index">
+<head>
+    <meta charset="UTF-8"/>
+    <title>HYAC</title>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1"/>
+    <link href="../library/css/bootstrap.min.css" rel="stylesheet"/>
+	<link href="../resources/css/page.css" rel="stylesheet"/>
+	<link href="../resources/css/index.css" rel="stylesheet"/>
+	
+</head>
+<body>
+
+<div class="page_main">
+
+	<div class="page_header" ng-init="nav_list=[{url:'./introduction.html',detail:'技术介绍'},{url:'./explain.html',detail:'使用说明',active:true},{url:'#',detail:'用户评价'},{url:'#',detail:'立即购买',type:'special'}];logo_url='../resources/images/logo.png';">
+
+		<div class="content">
+		
+			<div class="logo">
+
+				<a href="./">
+				
+					<img src="{{logo_url}}"/>
+				
+				</a>
+			
+			</div>
+			
+			<div class="list">
+			
+				<ul>
+				
+					<li class="unit{{data.type == 'special' ? ' special' : ''}}{{data.active ? ' active' : ''}}" ng-repeat="data in nav_list">
+					
+						<a href="{{data.url}}">
+						
+							{{data.detail}}
+						
+						</a>
+					
+					</li>
+				
+				</ul>
+			
+			</div>
+		
+		</div>
+	
+	</div>
+	
+	<!--<div ng-init="Junde={name:'JundeLee',sex:1,age:25}">
+	
+		<div ng-repeat="(key , value) in Junde track by $id(value)">
+		
+			{{ key + ' = ' + ( ( value | currency ) + '' || value ) + ' { ' + $id + ' } ' }}
+		
+		</div>
+	
+	</div>
+	
+	<div ng-init="arr=[{index:10,template:'123'},{index:5,template:'4567'},{index:15,template:'89123'}]">
+	
+		<div ng-repeat="value in arr | orderBy:'index'">
+		
+			{{ value.index + '  ' + ( value.template | reverse ) }}
+		
+		</div>
+	
+	</div>-->
+
+    <div class="page_body">
+	
+		<div class="page_content" style="background-color:#ececec;">
+	
+			<div class="container">
+			
+				<div class="row">
+				
+					<h1 class="center title">
+					
+						正确的穿着方法
+					
+						<p class="detail">
+						
+							巴伦丝蕴会对肌肉部位进行适当加压，引导身体做出正确的摆动姿势。<br/>
+							因此穿巴伦丝蕴的最初十分钟会感觉有些不适，但很快就会适应这种感觉。<br/>
+							穿着时，请注意把衣服拉到手腕和腰以下的部位，否做无法达到预期效果。
+						
+						</p>
+					
+					</h1>
+				
+				</div>
+				
+				<div class="row">
+				
+					<div class="content" style="padding-bottom:0;">
+					
+						<div class="clear" style="padding-bottom:80px;margin-top:-20px;">
+						
+							<div class="col-sm-4">
+							
+								<img src="../resources/images/explain_01.png"/>
+							
+							</div>
+						
+							<div class="col-sm-4">
+							
+								<img src="../resources/images/explain_02.png"/>
+							
+							</div>
+						
+							<div class="col-sm-4">
+							
+								<img src="../resources/images/explain_03.png"/>
+							
+							</div>
+						
+						</div>
+					
+					</div>
+				
+				</div>
+			
+			</div>
+		
+		</div>
+	
+		<div class="page_content" style="padding-top:0;">
+	
+			<div class="container">
+				
+				<div class="row">
+				
+					<div class="content" style="margin-top:0;">
+					
+						<div class="clear">
+						
+							<div class="col-sm-4">
+							
+								<img src="../resources/images/explain_04.png"/>
+							
+							</div>
+						
+							<div class="col-sm-4">
+							
+								<img src="../resources/images/explain_05.png"/>
+							
+							</div>
+						
+							<div class="col-sm-4">
+							
+								<img src="../resources/images/explain_06.png"/>
+							
+							</div>
+						
+						</div>
+					
+					</div>
+				
+				</div>
+			
+			</div>
+		
+		</div>
+	
+	</div>
+	
+	<!--
+	
+	<runoob-directive></runoob-directive>
+	
+	<div class="runoob-directive"></div>
+	
+	<div runoob-directive></div>-->
+	
+    <div class="page_footer">
+	
+		<div class="container h_100" style="display:table;">
+		
+			<div class="row table_row">
+			
+				<div class="col-lg-3 table_cell float_none">
+				
+					<div class="logo">
+					
+						<img src="{{logo_url}}"/>
+					
+					</div>
+				
+				</div>
+				
+				<div class="col-lg-9 table_cell float_none">
+				
+					<div class="detail">
+					
+						<ul>
+						
+							<li>
+							
+								[韩国] Chinaweb<span class="fontFamily_NanumGothic">주소:서울특별시광진구능동로49길 9</span>
+							
+							</li>
+							
+							<li>	
+								
+								[中国] 地址: 辽宁省大连市开发区双D港生命3路跨境电商产业园10号楼2单元401
+							
+							</li>
+							
+							<li class="special">
+							
+								Copyright © Balanswing All rights reserved.
+							
+							</li>
+						
+						</ul>
+					
+					</div>
+				
+				</div>
+			
+			</div>
+		
+		</div>
+
+    </div>
+
+    <div class="page_fixed_view">
+		
+    </div>
+
+    <div class="page_hidden_view">
+		
+    </div>
+
+</div>
+</body>
+<script src="../library/js/jquery.js"></script>
+<script src="../library/js/bootstrap.min.js"></script>
+<script src="../library/js/angular.min.js">
+
+</script>
+<script src="../library/js/angular-resource.min.js">
+
+</script>
+<script src="../library/js/angular-route.min.js">
+
+</script>
+<script src="../library/js/angular-cookies.min.js">
+
+</script>
+<script src="../library/js/angular-sanitize.min.js">
+
+</script>
+<script src="../library/js/angular-touch.min.js">
+
+</script>
+<script src="../library/js/angular-animate.min.js">
+
+</script>
+<script src="../resources/js/page.js">
+
+</script>
+</html>

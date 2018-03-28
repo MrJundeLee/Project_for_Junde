@@ -1,0 +1,49 @@
+.page_body .page_content{
+	
+	padding-top:80px;
+	
+	padding-bottom:50px;
+	
+}
+
+.page_body .page_content .title{
+	
+	font-size:3rem;
+	
+}
+
+.page_body .page_content .title .detail{
+	
+	font-size:1rem;
+	
+	color:#323333;
+	
+	margin-top:20px;
+	
+	line-height:1.8;
+	
+}
+
+.page_body .page_content .content{
+	
+	margin-top:65px;
+	
+}
+
+@media( max-width:768px ){
+	
+	.page_body .page_content{
+		
+		padding-left:15px;
+		
+		padding-right:15px;
+		
+	}
+	
+	.page_body .page_content .title{
+		
+		text-align:left;
+		
+	}
+	
+}

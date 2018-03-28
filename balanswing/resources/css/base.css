@@ -1,0 +1,231 @@
+body,html{
+	
+	font-size:16px;
+	
+	color:#333;
+	
+	background-color:#fff;
+	
+	font-family:arial,'Microsoft YaHei';
+	
+}
+
+img{
+	
+	max-width:100%;
+	
+	display:block;
+	
+	margin:auto;
+	
+}
+
+ul,li{
+	
+	list-style:none;
+	
+	margin:0;
+	
+	padding:0;
+	
+}
+
+.page_main{
+	
+	position:relative;
+	
+}
+
+.page_header{
+	
+	position:relative;
+	
+}
+
+.page_body{
+	
+	position:relative;
+	
+}
+
+.page_footer{
+	
+	position:relative;
+	
+}
+
+.page_fixed_view>div{
+	
+	pisition:fixed;
+	
+}
+
+.page_hidden_view>div{
+	
+	display:none;
+	
+}
+
+.clear:after,.clear:before{
+	
+	content:'';
+	
+	display:block;
+	
+	clear:both;
+	
+}
+
+.left{
+	
+	float:left;
+	
+}
+
+.right{
+	
+	float:right;
+	
+}
+
+.float_none{
+	
+	float:none;
+	
+}
+
+.block{
+	
+	display:block;
+	
+}
+
+.none{
+	
+	display:none;
+	
+}
+
+.relative{
+	
+	position:relative;
+	
+}
+
+.table_block{
+	
+	display:table;
+	
+	text-align:center;
+	
+}
+
+.table_row{
+	
+	display:table-row;
+	
+}
+
+.table_cell{
+	
+	display:table-cell;
+	
+	vertical-align:middle;
+	
+}
+
+.undeline{
+	
+	text-decoration:underline;
+	
+}
+
+.media_no_line{
+	
+	display:block;
+	
+}
+
+.center{
+	
+	text-align:center;
+	
+}
+
+.h_100{
+	
+	height:100%;
+	
+}
+
+.h_auto{
+	
+	height:auto;
+	
+}
+
+.w_100{
+	
+	width:100%;
+	
+}
+
+.w_auto{
+	
+	width:auto;
+	
+}
+	
+.media_show{
+	
+	display:none;
+	
+}
+
+@media( max-width:1200px ){
+	
+	.col-lg-2,.col-lg-3,.col-lg-4,.col-lg-6{
+		
+		margin:15px 0;
+		
+	}
+	
+}
+
+@media( max-width:768px ){
+	
+	body,html{
+		
+		font-size:14px;
+		
+	}
+	
+	.media_no_line{
+		
+		display:inline-block;
+		
+	}
+	
+	.media_hide{
+		
+		display:none;
+		
+	}
+	
+	.media_show{
+		
+		display:block;
+		
+	}
+	
+}
+
+@media( max-width:500px ){
+	
+	.page_body .title>h1,.page_body .title>h1+.detail{
+		
+		text-align:left;
+		
+	}
+	
+}
