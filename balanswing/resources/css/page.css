@@ -6,6 +6,10 @@
 
 @import "./content.css";
 
+@import "./block.css";
+
+@import "./table.css";
+
 @import url(https://fonts.googleapis.com/earlyaccess/nanumgothic.css);
 
 .fontFamily_NanumGothic{

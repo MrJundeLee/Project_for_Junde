@@ -1,20 +1,21 @@
 <!DOCTYPE html>
-<html lang="en" ng-app="index">
+<html lang="en" ng-app="index" style="overflow:hidden;">
 <head>
     <meta charset="UTF-8"/>
     <title>HYAC</title>
     <meta http-equiv="X-UA-Compatible" content="IE=edge"/>
     <meta name="viewport" content="width=device-width, initial-scale=1"/>
     <link href="../library/css/bootstrap.min.css" rel="stylesheet"/>
+	<link href="../library/css/owl.carousel.min.css" rel="stylesheet"/>
 	<link href="../resources/css/page.css" rel="stylesheet"/>
 	<link href="../resources/css/index.css" rel="stylesheet"/>
 	
 </head>
-<body>
+<body style="height:0;overflow:hidden;">
 
 <div class="page_main">
 
-	<div class="page_header" ng-init="nav_list=[{url:'./introduction.html',detail:'技术介绍',active:true},{url:'./explain.html',detail:'使用说明'},{url:'#',detail:'用户评价'},{url:'#',detail:'立即购买',type:'special'}];logo_url='../resources/images/logo.png';">
+	<div class="page_header" ng-init="nav_list=[{url:'./introduction.html',detail:'技术介绍',active:true},{url:'./explain.html',detail:'使用说明'},{url:'./evaluate.html',detail:'用户评价'},{url:'#',detail:'立即购买',type:'special'}];logo_url='../resources/images/logo.png';">
 
 		<div class="content">
 		
@@ -32,7 +33,7 @@
 			
 				<ul>
 				
-					<li class="unit{{data.type == 'special' ? ' special' : ''}}{{data.active ? ' active' : ''}}" ng-repeat="data in nav_list">
+					<li class="unit{{data.type == 'special' ? ' special' : ''}}{{data.active ? ' active' : ''}}" ng-repeat="data in nav_list track by $index">
 					
 						<a href="{{data.url}}">
 						
@@ -74,7 +75,21 @@
 	
 		<div class="banner banner_index" auto-height>
 		
-			<img src="../resources/images/banner_index.jpg" class="media_show"/>
+			<div id="carousel" class="h_100 owl-carousel">
+
+				<div class="item h_100" style="background:url( ../resources/images/banner_index.jpg ) no-repeat center center;background-size:auto 100%;background-color:#545454;">
+			
+					<img src="../resources/images/banner_index.jpg" class="media_show"/>
+				  
+				</div>
+			  
+				<div class="item h_100" style="background:url( ../resources/images/banner_index_.jpg ) no-repeat center center;background-size:auto 100%;background-color:#545454;">
+			
+					<img src="../resources/images/banner_index_.jpg" class="media_show"/>
+				  
+				</div>
+			  
+			</div>
 		
 			<div class="scroll_icon media_hide" click-scroll>
 			
@@ -210,7 +225,7 @@
 				
 				detail : [{
 				
-					style : 'font-size:1.2rem;',
+					style : {fontSize:'1.2rem'},
 				
 					detail : '选用韩国HYOSUNG公司高性能原纱布料'
 				
@@ -260,25 +275,25 @@
 				
 				detail : [{
 				
-					style : 'color:#949494;font-size:1.3rem;',
+					style : {color:'#949494',fontSize:'1.3rem'},
 					
 					detail : '黑色'
 				
 				},{
 				
-					style : 'color:#ea64ab;font-size:1.3rem;',
+					style : {color:'#ea64ab',fontSize:'1.3rem'},
 					
 					detail : '粉色'
 				
 				},{
 				
-					style : 'color:#fff;font-size:1.3rem;',
+					style : {color:'#fff',fontSize:'1.3rem'},
 					
 					detail : '白色'
 				
 				},{
 				
-					style : 'color:#46b9d1;font-size:1.3rem;',
+					style : {color:'#46b9d1',fontSize:'1.3rem'},
 					
 					detail : '蓝色'
 				
@@ -318,7 +333,7 @@
 				
 				detail : [{
 				
-					style : 'font-size:1.2rem;',
+					style : {fontSize:'1.2rem'},
 				
 					detail : '专利号 ： 10-2014-0173558 / 30-2017-0013473 / 30-2017-0013474'
 				
@@ -360,7 +375,7 @@
 		
 		} ];">
 		
-			<div class="banner banner_content banner_{{key<10 ? '0' + key : key}}" ng-repeat="(key,data) in banner_list">
+			<div class="banner banner_content banner_{{key<10 ? '0' + key : key}}" ng-repeat="(key,data) in banner_list track by $index">
 			
 				<div class="content{{data.type == 'container' ? ' container' : ( data.type == 'special' ? ' special_container' : '' )}}">
 				
@@ -374,9 +389,9 @@
 							
 						<p class="detail" ng-if="data.title.detail">
 						
-							<ng-view ng-repeat="(key,detail) in data.title.detail">
+							<ng-view ng-repeat="(key,detail) in data.title.detail track by $index">
 							
-								<span style="{{detail.style || ''}}">
+								<span ng-style="{{detail.style || ''}}">
 								
 									{{detail.detail}}
 								
@@ -390,9 +405,9 @@
 					
 					</div>
 				
-					<div class="img_list img_list_{{key<10 ? '0' + key : key}} clear" ng-repeat="(key,imgs) in data.img_list" ng-init="length=12/imgs.length;md_length=24/imgs.length;">
+					<div class="img_list img_list_{{key<10 ? '0' + key : key}} clear" ng-repeat="(key,imgs) in data.img_list track by $index" ng-init="length=12/imgs.length;md_length=24/imgs.length;">
 					
-						<div class="col-lg-{{length}} col-sm-{{md_length > 12 ? 12 : ( md_length > 6 ? ( imgs.length % 2 == 0 ? 6 : length ) : md_length )}} col-xs-{{length<=2?6:12}}" ng-repeat="value in imgs">
+						<div class="col-lg-{{length}} col-sm-{{md_length > 12 ? 12 : ( md_length > 6 ? ( imgs.length % 2 == 0 ? 6 : length ) : md_length )}} col-xs-{{length<=2?6:12}}" ng-repeat="value in imgs track by $index">
 						
 							<img src="{{value.url}}"/>
 							
@@ -406,7 +421,7 @@
 								
 								<p class="detail">
 								
-									<span class="media_no_line" ng-repeat="detail in value.detail.detail">
+									<span class="media_no_line" ng-repeat="detail in value.detail.detail track by $index">
 									
 										{{detail}}
 									
@@ -566,6 +581,7 @@
 </body>
 <script src="../library/js/jquery.js"></script>
 <script src="../library/js/bootstrap.min.js"></script>
+<script src="../library/js/owl.carousel.js"></script>
 <script src="../library/js/angular.min.js">
 
 </script>
@@ -588,6 +604,23 @@
 
 </script>
 <script src="../resources/js/page.js">
+
+</script>
+<script>
+
+$(function(){
+$( '#carousel' ).owlCarousel({
+	items: 1,
+	loop: true,
+	margin: 10,
+	autoplay: true,
+	autoplayTimeout: 3000,
+	autoplayHoverPause: true
+  });
+
+})
+	
+	
 
 </script>
 </html>

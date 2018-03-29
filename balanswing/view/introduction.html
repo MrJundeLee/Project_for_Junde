@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en" ng-app="index">
+<html lang="en" ng-app="index" style="overflow:hidden;">
 <head>
     <meta charset="UTF-8"/>
     <title>HYAC</title>
@@ -14,7 +14,7 @@
 
 <div class="page_main">
 
-	<div class="page_header" ng-init="nav_list=[{url:'./introduction.html',detail:'技术介绍',active:true},{url:'./explain.html',detail:'使用说明'},{url:'#',detail:'用户评价'},{url:'#',detail:'立即购买',type:'special'}];logo_url='../resources/images/logo.png';">
+	<div class="page_header" ng-init="nav_list=[{url:'./introduction.html',detail:'技术介绍',active:true},{url:'./explain.html',detail:'使用说明'},{url:'./evaluate.html',detail:'用户评价'},{url:'#',detail:'立即购买',type:'special'}];logo_url='../resources/images/logo.png';">
 
 		<div class="content">
 		
@@ -32,7 +32,7 @@
 			
 				<ul>
 				
-					<li class="unit{{data.type == 'special' ? ' special' : ''}}{{data.active ? ' active' : ''}}" ng-repeat="data in nav_list">
+					<li class="unit{{data.type == 'special' ? ' special' : ''}}{{data.active ? ' active' : ''}}" ng-repeat="data in nav_list track by $index">
 					
 						<a href="{{data.url}}">
 						
@@ -72,13 +72,13 @@
 
     <div class="page_body">
 	
-		<div class="page_content">
+		<div class="page_content" style="background-color:#ececec;">
 	
 			<div class="container">
 			
 				<div class="row">
 				
-					<h1 class="center title" style="font-size:3rem;">
+					<h1 class="center title" style="font-size:3rem;margin:0;">
 					
 						为什么选择 <span class="undeline">巴伦丝蕴</span> 高尔夫球衣？
 					
@@ -88,9 +88,280 @@
 				
 				<div class="row">
 				
-					<div class="content">
+					<div class="content introduction_content_show">
 					
 						<img src="../resources/images/sub1_main.jpg"/>
+					
+					</div>
+					
+					<div class="content introduction_content_hide">
+					
+						<div class="introduction_block type_01">
+						
+							<img src="../resources/images/introduction_banner_01.jpg"/>
+							
+							<div class="detail left">
+							
+								<h1 class="title">
+								
+									辅助收缩固定肩部 <br/> 使击球姿势更稳定
+								
+								</h1>
+								
+								<p class="detail">
+								
+									原料使用特种材料及专业工艺压制而成，<br/>根据人体运动学原理对肌肉适当加压，<br/>达到稳定击球摆动动作，<br/>平稳瞄球方向感的目的。
+								
+								</p>
+							
+							</div>
+						
+						</div>
+					
+						<div class="introduction_block type_02">
+						
+							<img src="../resources/images/introduction_banner_02.jpg"/>
+							
+							<div class="detail right">
+							
+								<h1 class="title">
+								
+									专利硅胶带
+								
+								</h1>
+								
+								<p class="detail">
+								
+									采用体育用品专用绷带<br/>在特定的部位用原纱再次固定<br/>有效稳定胸肌, 三角肌, 肱二头肌等<br/>控制双臂防止脱离挥杆轨道
+
+								
+								</p>
+							
+							</div>
+						
+						</div>
+					
+						<div class="introduction_block type_01">
+						
+							<img src="../resources/images/introduction_banner_03.jpg"/>
+							
+							<div class="detail right">
+							
+								<h1 class="title" style="font-size:1.9rem;margin-bottom:7px;">
+								
+									Noraxon EMG analysis device<br/>
+									<span style="font-size:1.5rem;">and software system</span>
+								
+								</h1>
+								
+								<p class="detail" style="margin-bottom:20px;">
+								
+									表面肌电采集分析系统
+
+								</p>
+								
+								<!--<img style="display:inline-block;" src="../resources/images/introduction_banner_17.jpg"/>-->
+							
+							</div>
+						
+						</div>
+					
+						<div class="introduction_block type_03">
+							
+							<div class="detail">
+							
+								<h1 class="title" style="font-size:3rem;margin-bottom:7px;">
+								
+									挥杆各阶段EMG分析
+									<span style="font-size:1rem;display:block;margin-top:15px;">内衣穿着前后的挥杆方式分析（左曲球和右曲球的方式测量及分析）</span>
+								
+								</h1>
+							
+							</div>
+							
+							<div>
+							
+								<!--<div class="col-sm-6 media_hide">
+								
+									<img src="../resources/images/introduction_banner_18.png">
+								
+								</div>-->
+							
+								<div class="col-sm-12" style="margin-bottom:35px;">
+								
+									<img src="../resources/images/introduction_banner_04.png"/>
+								
+								</div>
+								
+								<div class="col-md-6 col-sm-12">
+								
+									<img src="../resources/images/introduction_banner_05.jpg"/>
+								
+								</div>
+								
+								<div class="col-md-6 col-sm-12" style="padding-top:55px;">
+								
+									<p style="font-size:1.1rem;">EMG肌电图贴在肌肉上详细名称及相关肌电图频道。</p>
+								
+									<div class="table_block" style="padding-top:15px;">
+									
+										<div class="table_header table_row">
+										
+											<div class="table_cell">
+											
+												Muscle
+											
+											</div>
+										
+											<div class="table_cell">
+											
+												EMG Channel(L,R)
+											
+											</div>
+										
+										</div>
+									
+										<div class="table_row">
+										
+											<div class="table_cell">
+											
+												A / Gastrocnemius(GA)
+											
+											</div>
+										
+											<div class="table_cell">
+											
+												1,2
+											
+											</div>
+										
+										</div>
+									
+										<div class="table_row">
+										
+											<div class="table_cell">
+											
+												B / Biceps Femoris(BF)
+											
+											</div>
+										
+											<div class="table_cell">
+											
+												3,4
+											
+											</div>
+										
+										</div>
+									
+										<div class="table_row">
+										
+											<div class="table_cell">
+											
+												C / Rectus Femoris(RF)
+											
+											</div>
+										
+											<div class="table_cell">
+											
+												5,6
+											
+											</div>
+										
+										</div>
+									
+										<div class="table_row">
+										
+											<div class="table_cell">
+											
+												D / Deltoid(DT)
+											
+											</div>
+										
+											<div class="table_cell">
+											
+												7,8
+											
+											</div>
+										
+										</div>
+									
+										<div class="table_row">
+										
+											<div class="table_cell">
+											
+												E / Latissimus Dorsi(LD)
+											
+											</div>
+										
+											<div class="table_cell">
+											
+												9,10
+											
+											</div>
+										
+										</div>
+									
+										<div class="table_row">
+										
+											<div class="table_cell">
+											
+												F / Trapezius(TP)
+											
+											</div>
+										
+											<div class="table_cell">
+											
+												11,12
+											
+											</div>
+										
+										</div>
+									
+										<div class="table_row">
+										
+											<div class="table_cell">
+											
+												G / Brachioradialis(BR) 
+											
+											</div>
+										
+											<div class="table_cell">
+											
+												13,14
+											
+											</div>
+										
+										</div>
+									
+									</div>
+								
+								</div>
+								
+								<div class="col-md-12" style="margin-top:45px;">
+								
+									<img src="../resources/images/introduction_banner_06.png"/>
+								
+								</div>
+							
+							</div>
+						
+						</div>
+						
+						<div class="introduction_block type_03">
+							
+							<div class="detail">
+							
+								<h1 class="title" style="font-size:2.1rem;margin-bottom:7px;">
+								
+									<span style="font-size:1.1rem;display:block;margin-bottom:15px;">Golf Driver / iron / puting analysis</span>
+								
+									挥杆时详细并阶段性进行肌肉使用和肌肉协作肌电图分析
+								
+								</h1>
+							
+							</div>
+						
+						</div>
 					
 					</div>
 				

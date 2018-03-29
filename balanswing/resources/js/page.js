@@ -1,17 +1,114 @@
 var app = angular.module('index', ['ngAnimate']);
 
-app.controller('index_banner', function($scope) {
+app.controller('get_more', ['$scope','$http',function($scope,$http) {
 	
-	var ratio = 823 / 1920,
-		header = '.page_header';
+	$scope.data = [];
 	
-	$scope.set_height = function(){
+	$scope.new_evaluate_data = [];
 	
-		return 'height:' + ( $( window ).height() - $( header ).height() ) + 'px;'
+	var index = 0;
 	
-	}
+	var callback = $scope.get_more = function(){
 	
-});
+		$http({
+			
+			method: "POST",
+		   
+			url: $scope.ajax_url.get_more,
+			
+			data:{
+				
+				index : index || 0
+				
+			}
+			
+		}).success(function( res ){
+			
+			if( res && angular.isObject( res ) ){
+				
+				if( res.status == 1 )
+				
+				angular.forEach( res.data , function( value , key ){
+					
+					$scope.data.push( value );
+					
+				} );
+				
+				else if( res.status == 2 )
+					
+				$scope.status = true;
+				
+			}
+			
+		});
+		
+	}, init_news_evaluate_data = function(){
+		
+		$http({
+			
+			method: "POST",
+		   
+			url: $scope.ajax_url.init_new_evaluate,
+			
+			data:{}
+			
+		}).success(function( res ){
+			
+			if( res && angular.isObject( res ) ){
+				
+				if( res.status == 1 )
+				
+				angular.forEach( res.data , function( value , key ){
+					
+					$scope.new_evaluate_data.push( value );
+					
+				} );
+				
+			}
+			
+		});
+		
+	};
+	
+	$scope.thumbs_up = function( index , key , type ){
+				
+		var data = type ? 
+		
+			$scope.new_evaluate_data :
+			
+			$scope.data;
+		
+		if( index !== undefined )
+	
+			$http({
+				
+				method: "POST",
+			   
+				url: $scope.ajax_url.thump_up,
+				
+				data:{
+					
+					index : index
+					
+				}
+				
+			}).success(function( res ){
+					
+				if( res && angular.isObject( res ) && res.status == 1 )
+				
+					data[ key ].thumbs_type = false,
+				
+					data[ key ].thumbs_number ++;
+				
+			});
+	
+	};
+	
+	callback( index ++ );
+	
+	init_news_evaluate_data();
+	
+}]);
 
 app.directive('autoHeight',function ($window) {
 	
@@ -141,19 +238,12 @@ app.directive('clickScroll',function ( $window ) {
 	
 });
 
-
-app.filter('reverse', function() { //可以注入依赖
-    return function(text) {
-        return text.split("").reverse().join("");
-    }
-});
-
-app.controller('ajax', function($scope, $http) {
+$(function(){
+		
+	document.body.style.height = 'auto';
 	
-	$http.get( "../templates/view/ajax_test.php" ).success(function (response) {
-	  
-	  $scope.names = response.sites;
-	  
-	});
-  
+	document.body.style.overflow = 'initial';
+	
+	$( 'html' ).css( 'overflow' , 'initial' )
+	
 });

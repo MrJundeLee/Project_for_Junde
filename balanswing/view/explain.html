@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en" ng-app="index">
+<html lang="en" ng-app="index" style="overflow:hidden;">
 <head>
     <meta charset="UTF-8"/>
     <title>HYAC</title>
@@ -14,7 +14,7 @@
 
 <div class="page_main">
 
-	<div class="page_header" ng-init="nav_list=[{url:'./introduction.html',detail:'技术介绍'},{url:'./explain.html',detail:'使用说明',active:true},{url:'#',detail:'用户评价'},{url:'#',detail:'立即购买',type:'special'}];logo_url='../resources/images/logo.png';">
+	<div class="page_header" ng-init="nav_list=[{url:'./introduction.html',detail:'技术介绍'},{url:'./explain.html',detail:'使用说明',active:true},{url:'./evaluate.html',detail:'用户评价'},{url:'#',detail:'立即购买',type:'special'}];logo_url='../resources/images/logo.png';">
 
 		<div class="content">
 		
@@ -32,7 +32,7 @@
 			
 				<ul>
 				
-					<li class="unit{{data.type == 'special' ? ' special' : ''}}{{data.active ? ' active' : ''}}" ng-repeat="data in nav_list">
+					<li class="unit{{data.type == 'special' ? ' special' : ''}}{{data.active ? ' active' : ''}}" ng-repeat="data in nav_list track by $index">
 					
 						<a href="{{data.url}}">
 						
@@ -78,7 +78,7 @@
 			
 				<div class="row">
 				
-					<h1 class="center title">
+					<h1 class="center title" style="margin:0;">
 					
 						正确的穿着方法
 					

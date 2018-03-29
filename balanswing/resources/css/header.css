@@ -40,9 +40,19 @@
 	
 }
 
-.page_header .special a{
+.page_header .unit.special a{
+	
+	background-color:#27cdeb;
 	
 	background-image:linear-gradient( to top , #27cdeb 0% , #67ecd3 100% );
+	
+	-webkit-background-image:linear-gradient( to top , #27cdeb 0% , #67ecd3 100% );
+	
+	-moz-background-image:linear-gradient( to top , #27cdeb 0% , #67ecd3 100% );
+	
+	-ms-background-image:linear-gradient( to top , #27cdeb 0% , #67ecd3 100% );
+	
+	-o-background-image:linear-gradient( to top , #27cdeb 0% , #67ecd3 100% );
 	
 	color:#fff;
 	

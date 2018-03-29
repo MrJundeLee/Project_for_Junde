@@ -1,0 +1,401 @@
+<!DOCTYPE html>
+<html lang="en" ng-app="index" style="overflow:hidden;">
+<head>
+    <meta charset="UTF-8"/>
+    <title>HYAC</title>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1"/>
+    <link href="../library/css/bootstrap.min.css" rel="stylesheet"/>
+	<link href="../resources/css/page.css" rel="stylesheet"/>
+	<link href="../resources/css/index.css" rel="stylesheet"/>
+	
+</head>
+<body>
+
+<div class="page_main">
+
+	<div class="page_header" ng-init="nav_list=[{url:'./introduction.html',detail:'技术介绍'},{url:'./explain.html',detail:'使用说明'},{url:'./evaluate.html',detail:'用户评价',active:true},{url:'#',detail:'立即购买',type:'special'}];logo_url='../resources/images/logo.png';">
+
+		<div class="content">
+		
+			<div class="logo">
+
+				<a href="./">
+				
+					<img src="{{logo_url}}"/>
+				
+				</a>
+			
+			</div>
+			
+			<div class="list">
+			
+				<ul>
+				
+					<li class="unit{{data.type == 'special' ? ' special' : ''}}{{data.active ? ' active' : ''}}" ng-repeat="data in nav_list track by $index">
+					
+						<a href="{{data.url}}">
+						
+							{{data.detail}}
+						
+						</a>
+					
+					</li>
+				
+				</ul>
+			
+			</div>
+		
+		</div>
+	
+	</div>
+	
+	<!--<div ng-init="Junde={name:'JundeLee',sex:1,age:25}">
+	
+		<div ng-repeat="(key , value) in Junde track by $id(value)">
+		
+			{{ key + ' = ' + ( ( value | currency ) + '' || value ) + ' { ' + $id + ' } ' }}
+		
+		</div>
+	
+	</div>
+	
+	<div ng-init="arr=[{index:10,template:'123'},{index:5,template:'4567'},{index:15,template:'89123'}]">
+	
+		<div ng-repeat="value in arr | orderBy:'index'">
+		
+			{{ value.index + '  ' + ( value.template | reverse ) }}
+		
+		</div>
+	
+	</div>-->
+
+    <div class="page_body">
+	
+		<div class="page_content" style="background-color:#ececec;padding-bottom:30px;" ng-init="selection=['东西不错','外观不错','设计合理','方便实用','原装正品'];special_icon_url = '../resources/images/happy_icon.png';thumbs_icon = '../resources/images/thumbs_icon.png';no_assess_thumbs_icon = '../resources/images/thumbs_icon_no_assess.png';ajax_url={thump_up : './test.php' , get_more : './test_01.php' , init_new_evaluate : './test_02.php'};like_number=33010;like_progress='99.0';">
+	
+			<div class="container">
+			
+				<div class="row">
+				
+					<div class="content block_fff">
+					
+						<div style="font-size:1.1rem;color:#616161;">
+						
+							大家认为
+						
+						</div>
+						
+						<div class="selection clear">
+						
+							<ul>
+							
+								<li class="unit" ng-repeat="detail in selection track by $index">
+								
+									<a href="javascript:;">
+									
+										{{detail}}
+									
+									</a>
+								
+								</li>
+							
+							</ul>
+						
+						</div>
+					
+					</div>
+				
+				</div>
+				
+				<div class="row" ng-controller="get_more">
+					
+					<div style="font-size:1.2rem;margin-top:45px;margin-bottom:25px;">
+					
+						热门评价
+					
+					</div>
+					
+					<div class="col-lg-8 show_hot" style="padding:0;">
+						
+						<div class="content block_fff" style="margin-bottom:20px;" ng-if="data && data.length" ng-repeat="(key,value) in data track by $index">
+						
+							<div class="header clear relative">
+								
+								<div class="left">
+							
+									<div class="avatar_img">
+									
+										<img src="{{value.avatar_url}}"/>
+									
+									</div>
+								
+								</div>
+								
+								<div class="left detail">
+							
+									<div class="nickname">
+									
+										{{value.nickname}}
+									
+									</div>
+									
+									<div class="date">
+									
+										{{value.date}}
+									
+									</div>
+									
+									<div class="detail">
+									
+										{{value.detail}}
+									
+									</div>
+								
+								</div>
+								
+								<div class="special">
+								
+									<img src="{{special_icon_url}}">
+									
+									超爱
+								
+								</div>
+							
+							</div>
+							
+							<div class="img_list" ng-if="value.img_list && value.img_list.length">
+							
+								<ng-view ng-repeat="src in value.img_list track by $index">
+							
+									<img src="{{src}}"/>
+								
+								</ng-view>
+							
+							</div>
+							
+							<div class="footer">
+							
+								<div ng-init="index=value.index;" class="thumbs_block{{value.thumbs_type ? '' : ' active'}}" ng-click="value.thumbs_type && thumbs_up( index , key );">
+								
+									<img src="{{value.thumbs_type ? thumbs_icon : no_assess_thumbs_icon}}"/>
+									
+									{{value.thumbs_number?value.thumbs_number:''}}
+								
+								</div>
+							
+							</div>
+						
+						</div>
+						
+						<div class="get_more" ng-if="!status" ng-click="get_more();">
+						
+							点击 获取更多 ...
+						
+						</div>
+					
+					</div>
+					
+					<div class="col-lg-4 show_hot" style="padding-right:0;">
+					
+						<div class="content block_fff" style="margin-bottom:20px;">
+						
+							<div class="show_banner">
+							
+								<div class="special">
+								
+									<p class="clear">
+									
+										<span class="left">{{like_number}}</span>
+										
+										<i class="right" ng-style="like_number < 100000 ? {marginTop:'3rem'}: {}">人购买后满意</i>
+									
+									</p>
+								
+								</div>
+								
+								<div class="progress">
+								
+								  <div class="progress-bar progress-bar-success" role="progressbar" aria-valuenow="{{like_progress}}" aria-valuemin="0" aria-valuemax="100" ng-style="{width: like_progress + '%'}">
+								  
+									<span class="sr-only">{{like_progress}}% Complete (success)</span>
+									
+								  </div>
+								  
+								  <div class="detail">
+								  
+									满意度 {{like_progress}}%
+								  
+								  </div>
+								  
+								</div>
+							
+							</div>
+						
+						</div>
+					
+						<div style="font-size:1.2rem;margin-top:35px;margin-bottom:20px;padding-left:20px;">
+						
+							最新评价
+						
+						</div>
+					
+						<div class="content block_fff new_evalute" ng-if="new_evaluate_data && new_evaluate_data.length" ng-repeat="(key,value) in new_evaluate_data track by $index" style="padding-left:20px;padding-right:20px;padding-bottom:0;">
+						
+							<div class="header clear relative">
+								
+								<div class="left detail" style="color:#b0b0b0;font-size:.9rem;margin-left:0;">
+									
+									<span class="time" style="color:#b0b0b0;font-size:.9rem;">
+									
+										{{value.date}}
+									
+									</span>
+									
+									-
+							
+									<span class="nickname" style="color:#b0b0b0;font-size:.9rem;">
+									
+										{{value.nickname}}
+									
+									</span>
+								
+								</div>
+								
+								<div class="special">
+								
+									<img src="{{special_icon_url}}">
+									
+									超爱
+								
+								</div>
+								
+								<div class="detail left w_100" style="margin-top:15px;font-size:.9rem;color:#616161;margin-left:0;">
+								
+									{{value.detail}}
+								
+								</div>
+							
+							</div>
+							
+							<div class="footer" style="padding:20px 0 0 0;border-bottom:1px solid #ddd;padding-bottom:40px;">
+							
+								<div ng-init="index=value.index;" class="thumbs_block{{value.thumbs_type ? '' : ' active'}}" ng-click="value.thumbs_type && thumbs_up( index , key , 'new' );">
+								
+									<img src="{{value.thumbs_type ? thumbs_icon : no_assess_thumbs_icon}}"/>
+									
+									{{value.thumbs_number?value.thumbs_number:''}}
+								
+								</div>
+							
+							</div>
+						
+						</div>
+					
+					</div>
+				
+				</div>
+			
+			</div>
+		
+		</div>
+	
+	</div>
+	
+	<!--
+	
+	<runoob-directive></runoob-directive>
+	
+	<div class="runoob-directive"></div>
+	
+	<div runoob-directive></div>-->
+	
+    <div class="page_footer">
+	
+		<div class="container h_100" style="display:table;">
+		
+			<div class="row table_row">
+			
+				<div class="col-lg-3 table_cell float_none">
+				
+					<div class="logo">
+					
+						<img src="{{logo_url}}"/>
+					
+					</div>
+				
+				</div>
+				
+				<div class="col-lg-9 table_cell float_none">
+				
+					<div class="detail">
+					
+						<ul>
+						
+							<li>
+							
+								[韩国] Chinaweb<span class="fontFamily_NanumGothic">주소:서울특별시광진구능동로49길 9</span>
+							
+							</li>
+							
+							<li>	
+								
+								[中国] 地址: 辽宁省大连市开发区双D港生命3路跨境电商产业园10号楼2单元401
+							
+							</li>
+							
+							<li class="special">
+							
+								Copyright © Balanswing All rights reserved.
+							
+							</li>
+						
+						</ul>
+					
+					</div>
+				
+				</div>
+			
+			</div>
+		
+		</div>
+
+    </div>
+
+    <div class="page_fixed_view">
+		
+    </div>
+
+    <div class="page_hidden_view">
+		
+    </div>
+
+</div>
+</body>
+<script src="../library/js/jquery.js"></script>
+<script src="../library/js/bootstrap.min.js"></script>
+<script src="../library/js/angular.min.js">
+
+</script>
+<script src="../library/js/angular-resource.min.js">
+
+</script>
+<script src="../library/js/angular-route.min.js">
+
+</script>
+<script src="../library/js/angular-cookies.min.js">
+
+</script>
+<script src="../library/js/angular-sanitize.min.js">
+
+</script>
+<script src="../library/js/angular-touch.min.js">
+
+</script>
+<script src="../library/js/angular-animate.min.js">
+
+</script>
+<script src="../resources/js/page.js">
+
+</script>
+</html>

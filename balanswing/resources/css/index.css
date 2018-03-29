@@ -16,6 +16,12 @@
 	
 }
 
+#carousel div{
+	
+	height:100%;
+	
+}
+
 .page_body .banner_content.banner_02{
 	
 	background:url( ../images/index_banner_16.png ) no-repeat center 55px;
@@ -69,6 +75,8 @@
     margin: auto;
 	
 	width: 200px;
+	
+	z-index:1000;
 	
 	animation:scroll_icon 1s ease 0s infinite alternate;
 	
@@ -188,6 +196,12 @@
 	
 }
 
+.page_body .banner_content.banner_00 .img_list_01 img{
+	
+	width:100%;
+	
+}
+
 .page_body .banner_content.banner_00 .img_list_01>div,.page_body .banner_content.banner_03 .img_list>div,.page_body .banner_content.banner_05 .img_list>div{
 	
 	padding:0;
@@ -300,11 +314,37 @@
 	
 }
 
+@media( min-width:1201 ){
+
+	.page_body .banner_content.banner>.content>.img_list>div{
+		
+		padding:0;
+		
+	}
+
+	.page_body .banner_content>.container{
+		
+		padding:0;
+		
+	}
+	
+}
+
 @media( max-width:1200px ){
 	
 	.page_body .banner_content .special .col-lg-7{
 		
 		margin-left:0;
+		
+	}
+	
+}
+
+@media( min-width:769px ){
+	
+	.page_body .banner .media_show{
+		
+		display:none;
 		
 	}
 	

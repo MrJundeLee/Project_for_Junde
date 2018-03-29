@@ -1,0 +1,320 @@
+.page_body .page_content .block_fff{
+	
+	margin:0;
+	
+	padding:40px;
+	
+	background-color:#fff;
+	
+}
+
+.page_body .page_content .block_fff .selection{
+	
+	margin-top:20px;
+	
+	margin-bottom:-15px;
+	
+}
+
+.page_body .page_content .block_fff .selection .unit a{
+	
+	float:left;
+	
+	width:185px;
+	
+	height:40px;
+	
+	background-color:#f5f5f5;
+	
+	color:#666666;
+	
+	margin-right:30px;
+	
+	line-height:40px;
+	
+	text-align:center;    
+	
+	padding: 0 15px;
+	
+    margin-bottom: 15px;
+	
+    overflow: hidden;
+	
+    text-overflow: ellipsis;
+	
+    white-space: nowrap;
+	
+}
+
+.page_body .page_content .block_fff .selection .unit.active a,.page_body .page_content .block_fff .selection .unit a:hover{
+	
+	color:#fff;
+	
+	background-color:#ff7b33;
+	
+}
+
+.page_body .page_content .show_hot .header>.detail{
+	
+	margin-left:15px;
+	
+}
+
+.page_body .page_content .show_hot .header>.detail>.nickname{
+	
+	color:#8d665a;
+	
+	margin-bottom:12px;
+	
+	line-height:1;
+	
+}
+
+.page_body .page_content .show_hot .header>.detail>.date{
+	
+	font-size:.8rem;
+	
+	color:#b0b0b0;
+	
+	margin-bottom:12px;
+	
+	line-height:1;
+	
+}
+
+.page_body .page_content .show_hot .header>.detail>.detail{
+	
+	color:#616161;
+	
+	line-height:2;
+	
+	font-size:1.1rem;
+	
+}
+
+.page_body .page_content .show_hot .img_list{
+	
+	margin-top:50px;
+	
+}
+
+.page_body .page_content .show_hot .header .special{
+	
+	position:absolute;
+	
+	top:0;
+	
+	right:0;
+	
+	z-index:1;
+	
+	color:#ff7b33;
+	
+}
+
+.page_body .page_content .show_hot .footer{
+	
+	padding:35px 0 0 35px;
+	
+}
+
+.page_body .page_content .show_hot .footer .thumbs_block{
+	
+	color:#757575;
+	
+	font-size:.8rem;
+	
+	cursor:pointer;
+	
+}
+
+.page_body .page_content .show_hot .footer .thumbs_block.active,.page_body .page_content .show_hot .footer .thumbs_block:hover{
+	
+	color:#ff7b33;
+	
+}
+
+.page_body .page_content .show_hot .footer .thumbs_block>img{
+	
+	margin-right:7px;
+	
+	display: inline-block;
+	
+    float: none;
+	
+    vertical-align: bottom;
+	
+}
+
+.page_body .page_content .show_hot .header .special>*,.page_body .page_content .show_hot .footer .thumbs_block>*{
+	
+	float:left;
+	
+}
+.page_body .page_content .show_hot .header .special>img{
+	
+	margin-right:5px;
+	
+}
+
+.page_body .page_content .show_hot .get_more{
+
+    height: 50px;
+	
+    line-height: 50px;
+	
+    background-color: #fff;
+	
+    text-align: center;
+	
+	cursor:pointer;
+	
+}
+
+.page_body .page_content .show_banner{
+	
+	padding-top:10px;
+	
+}
+
+.page_body .page_content .show_banner .special *{
+	
+	color:#888;
+	
+	font-style:normal;
+	
+	font-family:'Microsoft YaHei';
+	
+}
+
+.page_body .page_content .show_banner .special span{
+	
+	color:#ff6700;
+	
+	font-size:4rem;
+	
+}
+
+.page_body .page_content .show_banner .progress{
+	
+	margin-top:7px;
+	
+	height:30px;
+	
+	position:relative;
+	
+	border-radius:0;
+	
+	margin-bottom:10px;
+	
+}
+
+.page_body .page_content .show_banner .progress .detail{
+	
+	position:absolute;
+	
+	text-align:center;
+	
+	line-height:30px;
+	
+	top:0;
+	
+	left:0;
+	
+	right:0;
+	
+	z-index:1;
+	
+	color:#fff;
+	
+}
+
+.page_body .page_content .show_hot .img_list ng-view img{
+	
+	margin-bottom:15px;
+	
+}
+
+.page_body .page_content .show_hot .img_list ng-view:last-child img{
+	
+	margin-bottom:0;
+	
+}
+
+@media( max-width:1200px ){
+
+	.page_body .page_content .block_fff .selection .unit{
+		
+		width:33.33%;
+		
+		float:left;
+		
+		padding:0 15px;
+		
+	}
+
+	.page_body .page_content .block_fff .selection .unit a{
+		
+		width:100%;
+		
+	}
+	
+	.page_body .page_content .show_hot{
+		
+		padding:0;
+		
+	}
+	
+}
+
+@media( max-width:768px ){
+
+	.page_body .page_content .block_fff .selection .unit{
+		
+		width:50%;
+		
+		float:left;
+		
+		padding:0 15px;
+		
+	}
+
+	.page_body .page_content .block_fff .selection .unit a{
+		
+		width:100%;
+		
+	}
+	
+	.page_body .page_content .block_fff{
+		
+		padding:15px;
+		
+	}
+	
+	.page_body .page_content .show_hot .avatar_img{
+		
+		display:none;
+		
+	}
+	
+	.page_body .page_content .show_hot .footer{
+		
+		padding-left:10px;
+		
+	}
+	
+	.page_body .page_content .new_evalute .header>.detail{
+		
+	}
+	
+	.page_body .page_content .new_evalute .header>.special{
+		
+		position:inherit;
+		
+		float:right;
+		
+		margin-bottom:15px;
+		
+	}
+	
+}

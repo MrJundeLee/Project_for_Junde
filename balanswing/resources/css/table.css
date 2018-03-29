@@ -1,0 +1,29 @@
+.page_main .table_block {
+	
+	width:100%;
+	
+	text-align:left;
+	
+}
+
+.page_main .table_block .table_header{
+	
+	background-color:#000;
+	
+	color:#fff;
+	
+}
+
+.page_main .table_block .table_cell{
+	
+	padding:7px;
+	
+	padding-left:35px;
+	
+	border-bottom:1px solid #ddd;
+	
+	font-size:1.1rem;
+	
+	white-space:nowrap;
+	
+}
