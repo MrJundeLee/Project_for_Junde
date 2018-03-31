@@ -352,6 +352,12 @@
 
 @media( max-width:768px ){
 	
+	.page_body .banner_content .img_list .detail .title{
+		
+		font-size:1rem;
+		
+	}
+	
 	.page_body .banner_content .special .shop_detail{
 		
 		margin-top:23px;
@@ -402,6 +408,78 @@
 		
 		padding-right:15px;
 		
+		padding-bottom:0;
+		
+	}
+	
+	.page_body .banner_content.banner_00 .img_list_00>div{
+		
+		width:50%;
+		
+		font-size:.7rem;
+		
+		float:left;
+		
+		text-align:left;
+		
+		height:350px;
+		
+	}
+	
+	.page_body .banner_content.banner_00 .img_list_01{
+		
+		margin-top:15px;
+		
+	}
+	
+	.page_body .banner_content.banner_00 .img_list_01>div,.page_body .banner_content.banner_02 .img_list>div{
+		
+		width:33.33%;
+		
+	}
+	
+	.page_body .banner_content.banner_03 .img_list>div,.page_body .banner_content.banner_04 .img_list>div{
+		
+		width:50%;
+		
+	}
+	
+	.page_body .banner_content .special .shop_btn{
+		
+		float:none;
+		
+		display:inline-block;
+		
+		margin:auto;
+		
+	}
+	
+	.page_body .banner_content .special{
+		
+		text-align:center;
+		
+	}
+	
+	.page_body .banner_content>.content>.title h1{
+		
+		text-align:center !important;
+		
+		font-size:1.5rem !important;
+		
+	}
+	
+	.page_body .banner_content>.content>.title .detail,.page_body .banner_content>.content>.title .detail span{
+		
+		font-size:.8rem !important;
+		
+		text-align:center !important;
+		
+	}
+	
+	.page_body .banner_content.banner_00 .img_list_00>div .detail .detail .media_no_line{
+		
+		display:inline;
+	
 	}
 	
 }

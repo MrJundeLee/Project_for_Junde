@@ -307,11 +307,63 @@
 			
 			img_list : [[{
 			
-				url : '../resources/images/index_banner_20.jpg'
+				url : [{
+				
+						nav : 'javascript:;',
+						
+						src : '../resources/images/index_banner_20.jpg',
+						
+						'class' : '',
+						
+						'style' : {'padding':'0'}
+				
+				}],
+				
+				type : 'more'
 			
 			},{
 			
-				url : '../resources/images/index_banner_21.jpg'
+				url : [
+				
+					{
+					
+						nav : 'javascript:;',
+						
+						src : '../resources/images/index_banner_21_01.jpg',
+						
+						'class' : 'col-xs-6',
+						
+						'style' : {'padding':'0'}
+					
+					},
+				
+					{
+					
+						nav : 'javascript:;',
+						
+						src : '../resources/images/index_banner_21_02.jpg',
+						
+						'class' : 'col-xs-6',
+						
+						'style' : {'float':'right','padding':'0'}
+					
+					},
+				
+					{
+					
+						nav : 'javascript:;',
+						
+						src : '../resources/images/index_banner_21_03.jpg',
+						
+						'class' : 'col-xs-6',
+						
+						'style' : {'padding':'0'}
+					
+					}
+				
+				],
+				
+				type : 'more'
 			
 			}],[{
 			
@@ -319,7 +371,19 @@
 			
 			},{
 			
-				url : '../resources/images/index_banner_23.jpg'
+				url : [{
+				
+						nav : 'javascript:;',
+						
+						src : '../resources/images/index_banner_23.jpg',
+						
+						'class' : '',
+						
+						'style' : {'padding':'0'}
+				
+				}],
+				
+				type : 'more'
 			
 			}]]
 		
@@ -333,11 +397,25 @@
 				
 				detail : [{
 				
-					style : {fontSize:'1.2rem'},
+					style : {display:'inline-block'},
+					
+					detail : '专利号 ：10-2014-0173558'
 				
-					detail : '专利号 ： 10-2014-0173558 / 30-2017-0013473 / 30-2017-0013474'
+				},{
 				
-				}]
+					style : {display:'inline-block'},
+					
+					detail : '30-2017-0013473'
+				
+				},{
+				
+					style : {display:'inline-block'},
+					
+					detail : '30-2017-0013474'
+				
+				}],
+				
+				detail_join : '/'
 				
 			},
 			
@@ -407,9 +485,23 @@
 				
 					<div class="img_list img_list_{{key<10 ? '0' + key : key}} clear" ng-repeat="(key,imgs) in data.img_list track by $index" ng-init="length=12/imgs.length;md_length=24/imgs.length;">
 					
-						<div class="col-lg-{{length}} col-sm-{{md_length > 12 ? 12 : ( md_length > 6 ? ( imgs.length % 2 == 0 ? 6 : length ) : md_length )}} col-xs-{{length<=2?6:12}}" ng-repeat="value in imgs track by $index">
+						<div class="clear col-lg-{{length}} col-sm-{{md_length > 12 ? 12 : ( md_length > 6 ? ( imgs.length % 2 == 0 ? 6 : length ) : md_length )}} col-xs-{{length<=2?6:12}}" ng-repeat="value in imgs track by $index">
 						
-							<img src="{{value.url}}"/>
+							<ng-view ng-switch="value.type">
+							
+								<img ng-switch-when="undefined" src="{{value.url}}"/>
+								
+								<div ng-switch-when="more">
+								
+									<div class="{{src_data['class']}}" ng-style="src_data.style" ng-repeat="src_data in value.url">
+									
+										<a class="clear" href="{{src_data.nav}}"><img src="{{src_data.src}}"></a>
+									
+									</div>
+								
+								</div>
+							
+							</ng-view>
 							
 							<div class="detail" ng-if="value.detail">
 							

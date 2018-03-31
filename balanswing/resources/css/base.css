@@ -175,6 +175,18 @@ ul,li{
 	width:auto;
 	
 }
+
+.bold{
+	
+	font-weight:bold;
+	
+}
+
+.no_bold{
+	
+	font-weight:normal;
+	
+}
 	
 .media_show{
 	
