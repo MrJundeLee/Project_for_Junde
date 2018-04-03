@@ -1,2 +1,3 @@
-# Project_for_Junde
-For project management
+# Junde 's project list
+
+Js/* 含有 Junde 对于 Js 的理解 ...
