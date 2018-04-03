@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8"/>
+<title>
+test include
+</title>
+</head>
+<body>
+<script src="./define.js">
+</script>
+<script src="./tool.js">
+</script>
+<script src="./ajax.js">
+</script>
+<script src="./include.js">
+</script>
+<script src="./jquery.js">
+</script>
+<script src="./define_jquery.js">
+</script>
+<script>
+/*	define.get( 'include' )( '/' , 'html' , ['Junde'] ).set_start_callback(function(){
+		console.log( this , arguments , 'start' );
+	}).set_end_callback(function(){
+		console.log( this , arguments , 'end' );
+	}).set_success_callback(function(){
+		console.log( this , arguments , 'success' );
+	}).set_error_callback(function(){
+		console.log( this , arguments , 'error' )
+	}).set_handle_param_callback(function( self , key , type ){
+		var iframe;
+		return iframe = $( '<iframe>' ),
+			iframe.one( 'load' , function(){
+				this.contentDocument.body.innerHTML = self;
+			} ),
+			iframe;
+	}).set_change_target( 'body' );
+	define.get( 'include' )( '/case_message_img.jpg' , 'image' , ['Junde'] ).set_start_callback(function(){
+		console.log( this , arguments , 'start' );
+	}).set_end_callback(function(){
+		console.log( this , arguments , 'end' );
+	}).set_success_callback(function(){
+		console.log( this , arguments , 'success' );
+	}).set_error_callback(function(){
+		console.log( this , arguments , 'error' )
+	}).set_handle_param_callback(function( self , key , type ){
+		var iframe;
+		return iframe = $( '<iframe>' ),
+			iframe.one( 'load' , function(){
+				this.contentDocument.body.appendChild( self );
+			} ),
+			iframe;
+	}).set_change_target( 'body' );
+	define.get( 'include' )( '/bootstrap.min.css' , 'css' , ['Junde'] ).set_start_callback(function(){
+		console.log( this , arguments , 'start' );
+	}).set_end_callback(function(){
+		console.log( this , arguments , 'end' );
+	}).set_success_callback(function(){
+		console.log( this , arguments , 'success' );
+	}).set_error_callback(function(){
+		console.log( this , arguments , 'error' )
+	}).set_change_target( 'body' );
+	define.get( 'include' )( './check_form.js' , 'js' , ['Junde'] ).set_start_callback(function(){
+		console.log( this , arguments , 'start' );
+	}).set_end_callback(function(){
+		console.log( this , arguments , 'end' );
+	}).set_success_callback(function(){
+		console.log( this , arguments , 'success' );
+	}).set_error_callback(function(){
+		console.log( this , arguments , 'error' )
+	}).set_change_target( 'body' );*/
+	define( 'ajax_url' , {
+		'test_01' : '/test.php',
+		'test_02' : '/test.php',
+		'test_03' : '/test.php',
+		'test_04' : '/test.php'
+	} );
+	define.get( 'include' )( define.get( 'ajax_url' ) , 'GET' , ['Junde'] ).set_start_callback(function(){
+		console.log( this , arguments , 'start' );
+	}).set_end_callback(function(){
+		console.log( this , arguments , 'end' );
+	}).set_success_callback(function(){
+		console.log( this , arguments , 'success' );
+	}).set_error_callback(function(){
+		console.log( this , arguments , 'error' )
+	}).set_change_target( 'body' );
+</script>
+</body>
+</html>

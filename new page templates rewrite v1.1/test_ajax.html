@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8"/>
+	<title>Test Ajax</title>
+</head>
+<body>
+<script  src="./define.js"></script>
+<script type="text/javascript" src="./tool.js"></script>
+<script type="text/javascript" src="./ajax.js"></script>	
+<script type="text/javascript">
+	define.get( 'ajax' )( {
+		url : '/test.php',
+		data : {
+			'name' : 'JundeLee',
+			'type' : 'test'
+		},
+		type : 'POST',
+		success : function( res ){
+			console.log( res );
+		},
+		error : function( res ){
+			console.log( res );
+		}
+	} )
+</script>
+</body>
+</html>
