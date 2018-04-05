@@ -18,7 +18,8 @@ define( 'include' , function( w , u ){
 				template : '参数 type 不正确 , 可选 参数有 "post",get","html","js","css","image";',
 				status : 1 
 			}
-		}
+		},
+		time : 100
 	};
 	var err = function( code , arr ){
 		var template;
@@ -50,14 +51,14 @@ define( 'include' , function( w , u ){
 	},
 	console_log = function( template ){
 		console.log( template );
-	};
+	},
+	status = 0;
 	//...
 	return function( callback ){
 		return callback;
 	//arguments
 	}( function( src , type , param , tool , ajax , $ ){
 		//private
-		console.log( src , type , param , tool , ajax , $ );
 		var callback,fn,self,
 			handle_arguments = function( src , type , param ){
 				var config = {};
@@ -101,13 +102,28 @@ define( 'include' , function( w , u ){
 					});
 				},
 				create_script = function( src , load  , error ){
-					return $( '<script>' ).attr( 'src' , src ).one( 'load' , tool.default_function( load ) ).one( 'error' , tool.default_function( error ) ).appendTo( 'body' ).get( 0 );
+					var script = document.createElement( 'script' );
+					script.onload = tool.default_function( load );
+					script.onerror = tool.default_function( error );
+					script.src = src;
+					return document.body.appendChild( script ),
+						script;/*
+					return $( '<script>' ).attr({
+						src : src
+					}).one( 'load' , tool.default_function( load ) ).one( 'error' , tool.default_function( error ) ).appendTo( 'body' ).get( 0 );*/
 				},
 				create_style = function( href , load , error ){
-					return $( '<link>' ).attr({
+					var link = document.createElement( 'link' );
+					link.rel = 'stylesheet';
+					link.onload = tool.default_function( load );
+					link.onerror = tool.default_function( error );
+					link.href = href;
+					return document.body.appendChild( link ),
+						link;
+					/*return $( '<link>' ).attr({
 						rel : 'stylesheet',
 						href : href
-					}).one( 'load' , tool.default_function( load ) ).one( 'error' , tool.default_function( error ) ).appendTo( 'body' ).get( 0 );
+					}).one( 'load' , tool.default_function( load ) ).one( 'error' , tool.default_function( error ) ).appendTo( 'body' ).get( 0 );*/
 				},
 				create_image = function( sec , load , error ){
 					return $( '<img>' ).attr( 'src' , src ).one( 'load' , tool.default_function( load ) ).one( 'error' , tool.default_function( error ) ).get( 0 );
@@ -125,7 +141,7 @@ define( 'include' , function( w , u ){
 					var script;
 					return script = create_script( url , function(){
 						$( script ).remove();
-						success.call( this , _this );
+						success.call( this , this );
 					} , function(){
 						$( script ).remove();
 						error.call( this , this );
@@ -134,10 +150,10 @@ define( 'include' , function( w , u ){
 				this[ 4 ] = function( url , success , error ){
 					var link;
 					return link = create_style( url , function(){
-						$( link ).remove();
+						//$( link ).remove();
 						success.call( this , this );
 					} , function(){
-						$( link ).remove();
+						//$( link ).remove();
 						error.call( this , this );
 					} );
 				}
@@ -223,6 +239,12 @@ define( 'include' , function( w , u ){
 						this;
 				},
 				getContent : function(){
+					if( status )
+						return setTimeout( function(){
+							self.getContent();
+						} , default_config.time ),
+						this;
+					status = 1;
 					var handle_url = function( url , param ){
 						if( param )
 							return url + '?' + param;
@@ -230,7 +252,7 @@ define( 'include' , function( w , u ){
 					},handle_callback = function( callback , key , _this , target , type ){
 						return callback.call( _this , _this , key , self.num , self.length , self),
 							type == 'success' && append( _this , target ),
-							self.length == self.num && end_callback( self.num , self.length );
+							self.length == self.num && !( status = 0 ) && end_callback( self.num , self.length );
 					},add_num = function(){
 						return num ++,
 							self.num ++;
@@ -260,7 +282,8 @@ define( 'include' , function( w , u ){
 								add_num();
 								handle_callback( error_callback , key , handle_param( res , key , 'error' ) , target , 'error' );
 							} );
-						} )
+						} ),
+						this;
 				}
 			},
 			//execute

@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+<title>test_putty</title>
+<meta name="description" content="">
+<meta name="keywords" content="">
+</head>
+<body>
+    
+<script src="./define.js">
+</script>
+<script src="./tool.js">
+</script>
+<script src="./putty.js">
+</script>
+<script>
+	var i = define.get( 'putty' )([{
+		'target' : '_Map',
+		'context' : window,
+		'name' : 'Map',
+		'callback' : function(){
+			return function( callback ){
+				return callback();
+			}(function(){
+				var callback,fn,self,
+					data = {
+						keys : [],
+						values : []
+					},
+					reSet = function( index , content ){
+						data.values[ index ] = content;
+					},
+					Set = function( name , content ){
+						data.keys.push( name );
+						data.values.push( content );
+					},
+					Get = function( index , type ){
+						return data[ type ][ index ];
+					},
+					Has = function( name ){
+						var result;
+						return forEach( function( key , value , index ){
+							name == key &&
+								( result = index );
+						} ),
+							result;
+					},
+					forEach = function( callback ){
+						var i = 0,
+							target;
+						while( undefined !== ( target = Get( i , 'keys' ) ) )
+							callback( target , Get( i , 'values' ) , i ),
+							i ++;
+					},
+					Delete = function( index ){
+						data.keys.splice( index , 1 );
+						data.values.splice( index , 1 );
+					},
+					Clear = function(){
+						data.keys = [];
+						data.values = [];
+					},
+					GetAll = function( type ){
+						return data[ type ].slice();
+					},
+					GetSize = function(){
+						return data.keys.length;
+					};
+				return callback = new Function(),
+					callback.prototype = fn = {
+						'set' : function( name , content ){
+							var key;
+							if( name === undefined )
+								name = String( undefined );
+							if( undefined !== ( key = Has( name ) ) )
+								reSet( key , content );
+							else
+								Set( name , content );
+							this.size = GetSize();
+						},
+						'get' : function( name ){
+							var key;
+							if( undefined === ( key = Has( name ) ) )
+								return ;
+							return Get( key , 'values' );
+						},
+						'forEach' : function( callback ){
+							var _callback = 'function' == typeof callback ? callback : new Function();
+							forEach( function( key , value , index ){
+								return _callback( key , value );
+							} );
+						},
+						'delete' : function( name ){
+							var key;
+							if( undefined === ( key = Has( name ) ) )
+								return undefined;
+							Delete( key );
+							this.size = GetSize();
+						},
+						'clear' : function(){
+							Clear();
+							this.size = GetSize();
+						},
+						'keys' : function(){
+							return GetAll( 'keys' );
+						},
+						'values' : function(){
+							return GetAll( 'values' );
+						}
+					},
+					new callback();
+			})
+		}
+	}])
+</script>
+</body>
+</html>

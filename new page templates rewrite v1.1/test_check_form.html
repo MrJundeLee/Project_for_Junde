@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+<title>test_check_form</title>
+<meta name="description" content="">
+<meta name="keywords" content="">
+</head>
+<body>
+    <form id="lalala">
+    	<div>
+    		<input name="Junde" data-verify_mode="underline" data-verify_type="check_empty" data-verify_ins_key="Junde_verify_check_empty"/>
+    	</div>
+    	<div>
+    		<input name="Lalala" data-verify_mode="underline" data-verify_type="check_allway_assess" data-verify_ins_key="Junde_verify_check_allway_assess" data-user_verify_type="console.log( '用户自定义验证方式 ： 单行逻辑  (复杂逻辑 不建议使用 单行调用)' , this , arguments ),false;"/>
+    	</div>
+    	<div>
+    		<input name="Heiheihei" data-verify_mode="underline" data-verify_type="check_email" data-verify_ins_key="Junde_verify_check_email" data-user_verify_type="function(){console.log( '用户自定义验证方式 ： 匿名函数  ' , arguments , this )}"/>
+    	</div>
+    	<div>
+    		<input name="Enenen" data-verify_mode="underline" data-verify_type="check_telnumber" data-verify_ins_key="Junde_verify_check_telnumber" data-user_verify_type="user_verify"/>
+    		<script type="text/javascript">
+    			var user_verify = function(){
+    				console.log( '用户自定义验证方式 ： 回调函数  ' , this , arguments );
+
+    			}
+    		</script>
+    	</div>
+    	<div>
+    		<input name="Hehehe" data-verify_mode="underline" data-verify_type="check_allnumber" data-verify_ins_key="Junde_verify_check_allnumber"/>
+    	</div>
+    	<div>
+    		<input name="Dadada" data-verify_mode="underline" data-verify_type="check_date" data-verify_ins_key="Junde_verify_check_date"/>
+    	</div>
+    	<div>
+    		<input name="Emmm..." data-verify_mode="underline" data-verify_type="check_time" data-verify_ins_key="Junde_verify_check_time"/>
+    	</div>
+    	<div>
+    		<input name="3.1415926....." data-verify_mode="underline" data-verify_type="check_datetime" data-verify_ins_key="Junde_verify_check_datetime"/>
+    	</div>
+    	<div>
+    		<input name="Lee" data-verify_mode="underline" data-verify_type="check_file" data-verify_ins_key="Junde_verify_check_file" data-user_verify_type="user_verify_file" type="file"/>
+    		<script type="text/javascript">
+    			var user_verify_file = function( fileList ){
+    				var handle_size = function( size ){
+    					return ( size / 1024 / 1024 ).toFixed( 2 );
+    				},max_size = 5,size = 0;
+    				return ( fileList || [] ).forEach(function( value , key ){
+    					size += handle_size( value.fileSize || 0 );
+    				}),
+    					size < max_size;
+    			}
+    		</script>
+    	</div>
+    	<div>
+    		<input name="Leeaaaaaa" data-verify_mode="underline" data-verify_type="check_image" data-verify_ins_key="Junde_verify_check_image" data-user_verify_type="user_verify_image" type="file"/>
+    		<script type="text/javascript">
+    			var user_verify_image = function( fileList ){
+    				var handle_size = function( size ){
+    					return ( size / 1024 / 1024 ).toFixed( 2 );
+    				},max_size = 1,size = 0;
+    				return ( fileList || [] ).forEach(function( value , key ){
+    					size += handle_size( value.fileSize || 0 );
+    				}),
+    					size < max_size;
+    			}
+    		</script>
+    	</div>
+    	<div>
+    		<input name="ennnnnnnna" data-verify_mode="underline" data-verify_type="custom_check" data-verify_ins_key="Junde_verify_custom_check" data-user_verify_type="false;"/>
+    	</div>
+    </form>
+    <script type="text/javascript" src="./define.js"></script>
+    <script type="text/javascript" src="./jquery.js"></script>
+    <script type="text/javascript" src="./define_jquery.js"></script>
+    <script type="text/javascript" src="./tool.js"></script>
+    <script type="text/javascript" src="./ajax.js"></script>
+    <script type="text/javascript" src="./include.js"></script>
+    <script type="text/javascript">
+    	var include = define.get( 'include' );
+    	include([ './putty.js' , './lang.js' , './alert.js' , './check_form.js' ],'js').set_start_callback(function(){
+    		console.log( 'start' );
+    	}).set_success_callback(function(){
+    		console.log( 'success' );
+    	}).set_error_callback(function(){
+    		console.log( 'error' );
+    	}).set_end_callback(function(){
+    		console.log( 'end' , this , arguments );
+	    	define.get( 'verify' )( 'form' ).verify();
+	});
+    		include( './page.css' , 'css' );
+    </script>
+</body>
+</html>

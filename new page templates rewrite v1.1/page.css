@@ -1,0 +1,16 @@
+[data-verify_mode].fail{
+	border:1px solid red;
+}
+[data-verify_mode].success{
+	border:1px solid green;
+}
+.detail{
+	font-size:12px;
+	line-height:2;
+}
+.detail.success{
+	color:green;
+}
+.detail.fail{
+	color:red;
+}

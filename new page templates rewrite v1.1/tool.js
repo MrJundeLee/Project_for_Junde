@@ -59,7 +59,7 @@ define( 'tool' , function( w , u ){
 				return false;
 		}
 		this.trim = function( str ){
-			return ( is_string( str ) ? str : '' ).replace( /^\s+|\s+$/ , '' );
+			return ( this.is_string( str ) ? str : '' ).replace( /^\s+|\s+$/g , '' );
 		}
 		this.default_object = function( obj ){
 			return this.is_object( obj ) ?

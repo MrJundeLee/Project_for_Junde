@@ -60,8 +60,8 @@ test include
 		console.log( this , arguments , 'success' );
 	}).set_error_callback(function(){
 		console.log( this , arguments , 'error' )
-	}).set_change_target( 'body' );
-	define.get( 'include' )( './check_form.js' , 'js' , ['Junde'] ).set_start_callback(function(){
+	}).set_change_target( 'body' );*/
+	define.get( 'include' )( 'http://127.0.0.1:80/test/check_form.js' , 'js' , ['Junde'] ).set_start_callback(function(){
 		console.log( this , arguments , 'start' );
 	}).set_end_callback(function(){
 		console.log( this , arguments , 'end' );
@@ -69,8 +69,8 @@ test include
 		console.log( this , arguments , 'success' );
 	}).set_error_callback(function(){
 		console.log( this , arguments , 'error' )
-	}).set_change_target( 'body' );*/
-	define( 'ajax_url' , {
+	}).set_change_target( 'body' );
+	/*define( 'ajax_url' , {
 		'test_01' : '/test.php',
 		'test_02' : '/test.php',
 		'test_03' : '/test.php',
@@ -84,7 +84,7 @@ test include
 		console.log( this , arguments , 'success' );
 	}).set_error_callback(function(){
 		console.log( this , arguments , 'error' )
-	}).set_change_target( 'body' );
+	}).set_change_target( 'body' );*/
 </script>
 </body>
 </html>
