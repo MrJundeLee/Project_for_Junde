@@ -39,12 +39,32 @@ define( 'lang' , new function(){
 		    	},
 		    	Junde_verify_check_image : {
 		    		success : '图片验证成功!',
-		    		fail : '图片验证失败!请选择一个不大于1MB的图片上传...'
+		    		fail : '图片验证失败!请选择一个不大于1MB的,后缀应是 ( .bmp | .gif | .jpg | .jpeg | .png ) 的图片上传...'
 		    	},
 		    	Junde_verify_custom_check : {
 		    		success : '自定义验证成功!',
 		    		fail : '自定义验证失败!'
+		    	},
+		    	Junde_verify_group_or : {
+		    		success : '组( group_or ) 匹配成功!',
+		    		fail : '组( group_or )  内元素应该至少一个满足验证!'
+		    	},
+		    	Junde_verify_group_and : {
+		    		success : '组( group_and ) 匹配成功!',
+		    		fail : '组( group_and )  内元素必须全部满足验证!'
+		    	},
+		    	Junde_verify_check_radio : {
+		    		success : 'radio 匹配成功!',
+		    		fail : 'radio 验证失败!'
+		    	},
+		    	Junde_verify_check_checkbox : {
+		    		success : 'checkbox 匹配成功!',
+		    		fail : 'checkbox 验证失败!'
 		    	}
+		},
+		alert : {
+			_default_verify_alert_header : 'verify',
+			_default_verify_alert_btn_title : 'confirm'
 		}
 	}
 }() );

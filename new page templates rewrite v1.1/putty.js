@@ -1,5 +1,5 @@
 define( 'putty' , function( w , u ){
-	const default_config = {
+	var default_config = {
 		err_code : {
 			1001 : {
 				code : 1001,
@@ -113,6 +113,7 @@ define( 'putty' , function( w , u ){
 define.get( 'putty' )([{
 	//putty:Map
 	'target' : 'Map',
+	'context' : window,
 	'name' : 'Map',
 	'callback' : function(){
 		return function( callback ){
@@ -183,7 +184,7 @@ define.get( 'putty' )([{
 					'forEach' : function( callback ){
 						var _callback = 'function' == typeof callback ? callback : new Function();
 						forEach( function( key , value , index ){
-							return _callback( key , value );
+							return _callback( value , key );
 						} );
 					},
 					'delete' : function( name ){
@@ -235,5 +236,32 @@ define.get( 'putty' )([{
 	      }
 	      k++;
 	    }
+	}
+},{
+	//putty:map
+	'target' : 'map',
+	'name' : 'array map',
+	'context' : Array.prototype,
+	'callback' : function( callback , thisArg ){
+	    	var T, A, k;
+	   	 if (this == null) 
+	      		throw new TypeError(" this is null or not defined");
+	   	var O = Object(this);
+	    	var len = O.length >>> 0;
+	    	if (Object.prototype.toString.call(callback) != "[object Function]") 
+	      		throw new TypeError(callback + " is not a function");
+	    	if (thisArg) 
+	      		T = thisArg;
+	    	A = new Array(len);
+	    	k = 0;
+	    	while(k < len) {
+	      		var kValue, mappedValue;
+	      		if (k in O) 
+		      		kValue = O[ k ],
+		        	mappedValue = callback.call(T, kValue, k, O),
+		        	A[ k ] = mappedValue;
+		     	k++;
+		}
+	    return A;
 	}
 }])
