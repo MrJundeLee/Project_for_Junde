@@ -1,6 +1,6 @@
 define( 'include' , function( w , u ){
 	//static 
-	const default_config = {
+	var default_config = {
 		type : {
 			'post' : 0,
 			'get' : 1,

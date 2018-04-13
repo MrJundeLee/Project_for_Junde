@@ -1,5 +1,5 @@
 define( 'ajax' , function( w , u ){
-	const default_config = {
+	var default_config = {
 		arg : {
 			'url' : 1,
 			'data' : 2,
@@ -16,6 +16,7 @@ define( 'ajax' , function( w , u ){
 		},
 		err_code : {
 			'1001' : {
+				code : 1001,
 				status : 0,
 				responseText : '你并没有引入 tool 文件。'
 			}
