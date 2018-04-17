@@ -1,6 +1,36 @@
 define( 'lang' , new function(){
 	this.verify = {
 		ins : {
+			article_name : {
+
+				'fail' : '文章标题不能为空'
+
+			},
+			article_content : {
+
+				'fail' : '文章内容不能为空'
+
+			},
+			record_province : {
+
+				'fail' : '省份未选择'
+
+			},
+			record_year : {
+
+				'fail' : '请输入正确的年份格式'
+
+			},
+			record_month : {
+
+				'fail' : '月份未选择'
+
+			},
+			record_file : {
+
+				'fail' : '请选择一个Excel数据文件'
+
+			},
 			Junde_verify_check_empty : {
 				success : '',
 	    			fail : '非空验证失败!'

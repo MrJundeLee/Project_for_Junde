@@ -357,7 +357,7 @@ define( 'verify' , function( callback ){
 				var get_detail = function( target , detail , location ){
 					_target = $( target ).get( 0 );
 					return $( data.has( _target ) ?
-						data.get( _target ) :
+						$( data.get( _target ) ).html( detail || '' ) :
 						create_detail( _target , detail , location ) ).html( detail ).show();
 				}, create_detail = function( target , detail , location ){
 					var _target;
@@ -650,10 +650,14 @@ define( 'verify' , function( callback ){
 					},get_dom = function( dom ){
 						return $( dom ).get( 0 );
 					},get_result = function( value ){
-						result = value.verify_type.call( value.target , value.value )
+						var user_result;
+						result = value.verify_type.call( value.target , value.value );
 						value.value = _value = verify_list.verify_unit;
-						if( false === value.user_type.call( value.target , _value ) )
-							result = !result;
+						user_result = value.user_type.call( value.target , _value , result );
+						if( false === user_result )
+							result = false;
+						else if( true === user_result )
+							result = true;
 						return result;
 					},result,_value;
 					return tool.each( unit ? [[unit]] : this.unit , function( key , value ){

@@ -85,15 +85,17 @@ define( 'set_style_rules' , function( w , u ){
 					styleRight = '}\r\n',
 					styleMediaLeft = '@media(',
 					styleMediaRight = ')',
-					styleKeyframes = '@keyframes ',
+					styleKeyframes = ['@keyframes ','@-webkit-keyframes ','@-o-keyframes ','@-moz-keyframes ','@-ms-keyframes '],
 					allot_type = function( data ){
-						switch( data.type ){
+						switch( data.type || '' ){
 							case 'style' :
 								return create_style( data );
 							case 'media':
 								return create_media( data );
 							case 'animation':
 								return create_keyframes( data );
+							case '' :
+								return create_style( data );
 						}
 					}, create_style = function( data ){
 						var styleText = '';
@@ -112,22 +114,27 @@ define( 'set_style_rules' , function( w , u ){
 							} , true ),
 							styleText + styleRight + styleRight;
 					}, create_keyframes = function( data ){
-						var styleText = styleKeyframes + data.target + styleLeft;
-						return tool.each( data.actions , function( key , value ){
-							styleText += value.target + styleLeft;
-							tool.each( value.styleRules , function( key , value ){
-								if( key !== u )
-									styleText += ( create_styleUnit_format( key , value ) + '\r\n' );
+						var styleText = '';
+						return tool.each( styleKeyframes , function( key , value ){
+							styleText += value + data.target + styleLeft;
+							console.log( data )
+							tool.each( data.actions , function( key , value ){
+								styleText += value.target + styleLeft;
+								tool.each( value.styleRules , function( key , value ){
+									if( key !== u )
+										styleText += ( create_styleUnit_format( key , value ) + '\r\n' );
+								} , true );
+								styleText += styleRight;
 							} , true );
-							styleText += styleRight;
+							styleText += styleRight
 						} , true ),
-							styleText + styleRight;
+							styleText;
 					},create_styleUnit_format = function( key , value ){
 						return key + ':' + value + ';';
 					};
 				return tool.each( rules , function( key , value ){
 					if( tool.is_object( value ) )
-						styleRules += allot_type( this );
+						styleRules += allot_type( this ) || '';
 				} , true ),
 					styleRules;
 			},append_html = function( target , html ){

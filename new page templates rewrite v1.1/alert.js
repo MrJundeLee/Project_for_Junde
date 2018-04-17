@@ -236,10 +236,11 @@ define( 'alert' , function( w , u ){
 	},
 	status = 0,
 	show_status = 0,
-	load_list = [];
+	load_list = [],
+	style;
 	return function( callback ){
 		return callback;
-	}( function( json , tool , $ , putty , lang ){
+	}( function( json , tool , set_style_rules , $ , putty , lang ){
 		var callback,fn,self,
 			create = function( node , attr , html ){
 				var _node = document.createElement( node );
@@ -250,29 +251,11 @@ define( 'alert' , function( w , u ){
 					$( _node );
 			},
 			handle_styleRules = function(){
-				var styleRules = '',
-					styleLeft = '{\r\n',
-					styleRight = '}\r\n',
-					is_type = function( data ){
-						switch( data.type ){
-							case 'style' :
-								return create_style( data );
-						}
-					},
-					create_style = function( data ){
-						var styleText = '';
-						return styleText = data.target + styleLeft,
-							tool.each( data.styleRules , function( key , value ){
-								styleText += ( create_styleUnit_format( key , value ) + '\r\n' );
-							} , true ),
-							styleText + styleRight;
-					};
+				if( style )
+					return;
 				return tool.each( default_config.styleRules , function(){
-					tool.each( this , function(){
-						styleRules += is_type( this );
-					} , true );
-				} , true ),
-					styleRules;
+					style = set_style_rules(this);
+				} , true );
 			}, handle_context = function( context ){
 				var _context = $( context );
 				return tool.in_case( _context.length , _context , $( default_config.context ) );
@@ -284,10 +267,6 @@ define( 'alert' , function( w , u ){
 				return tool.in_case( tool.is_array( arr ) , arr , [] ).map( callback );
 			}, create_div = function( attr , html ){
 				return create( 'div' , attr , html );
-			}, create_styleUnit_format = function( key , value ){
-				return key + ':' + value + ';';
-			}, create_styleRule = function( styleRule ){
-				return $( create( 'style' , {'data-id':default_config.style_data_id} , styleRule ) ).appendTo( default_config.context );
 			},create_alert = function( data , context ){
 				var _data = {},
 					_r_data = new Map(),
@@ -377,7 +356,7 @@ define( 'alert' , function( w , u ){
 				return clear_target_className( body , 'body' ).addClass( className_arr.hide_alert.className );
 			},
 			init_styleRules = function(){
-				return create_styleRule( handle_styleRules() );
+				return handle_styleRules();
 			}(),
 			change_status = function( bl ){
 				return status = tool.in_case( bl == true , 1 , 0 );
@@ -483,7 +462,7 @@ define( 'alert' , function( w , u ){
 				check : function( ins ){
 					switch( ins ){
 						default :
-							if( !tool || !$ || !putty || !lang )
+							if( !tool || !$ || !putty || !lang || !set_style_rules )
 								this.err( 1001 );
 							break;
 					}
@@ -635,4 +614,4 @@ define( 'alert' , function( w , u ){
 			},
 			new callback().init();
 	} )
-}( window , void( 0 ) ) , ['tool','jquery','putty','lang'] )
+}( window , void( 0 ) ) , ['tool' , 'set_style_rules','jquery','putty','lang'] )
